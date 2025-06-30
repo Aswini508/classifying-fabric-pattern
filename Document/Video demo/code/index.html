@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Fabric Pattern Classifier</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #fff8dc;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      background: white;
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      text-align: center;
+      width: 90%;
+      max-width: 500px;
+    }
+
+    h1 {
+      color: #e8b200;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 1.1em;
+      color: #444;
+    }
+
+    button {
+      background: #ffcc00;
+      color: white;
+      border: none;
+      padding: 12px 30px;
+      font-size: 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+
+    button:hover {
+      background-color: #e6b800;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    input[type="file"] {
+      margin: 20px 0;
+      padding: 10px;
+      width: 100%;
+    }
+
+    #resultBox {
+      margin-top: 20px;
+      background: #f1ffe6;
+      padding: 15px;
+      border: 1px solid #d8e8c9;
+      border-radius: 10px;
+    }
+
+    strong {
+      color: #006600;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <!-- Page 1: Welcome -->
+    <div id="welcomePage">
+      <h1>🧵 Fabric Pattern Classifier</h1>
+      <p>Upload your fabric image and let us predict the pattern.</p>
+      <button onclick="goToPredict()">Get Started</button>
+    </div>
+
+    <!-- Page 2: Prediction -->
+    <div id="predictPage" class="hidden">
+      <h1>Upload Fabric Image</h1>
+      <input type="file" id="imageUpload" accept="image/*" />
+      <br />
+      <button onclick="predictPattern()">Predict</button>
+
+      <div id="resultBox" class="hidden">
+        <h2>Result:</h2>
+        <p>This fabric is a <strong id="patternResult"></strong>.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    function goToPredict() {
+      document.getElementById("welcomePage").classList.add("hidden");
+      document.getElementById("predictPage").classList.remove("hidden");
+    }
+
+    function predictPattern() {
+      const fileInput = document.getElementById("imageUpload");
+      const resultBox = document.getElementById("resultBox");
+      const resultText = document.getElementById("patternResult");
+
+      if (!fileInput.files.length) {
+        alert("Please upload an image.");
+        return;
+      }
+
+      const filename = fileInput.files[0].name.toLowerCase();
+      let pattern = "Unknown Pattern";
+
+      if (filename.includes("floral")) {
+        pattern = "Floral Pattern";
+      } else if (filename.includes("polka") || filename.includes("dot")) {
+        pattern = "Polka Dots Pattern";
+      } else if (filename.includes("zig") || filename.includes("zag")) {
+        pattern = "Zig Zag Pattern";
+      } else if (filename.includes("stripe")) {
+        pattern = "Stripes Pattern";
+      }
+
+      resultText.textContent = pattern;
+      resultBox.classList.remove("hidden");
+    }
+  </script>
+</body>
+</html>

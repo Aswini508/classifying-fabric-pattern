@@ -1,0 +1,50 @@
+body {
+  background-color: #fff9e6;
+  font-family: 'Segoe UI', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.container {
+  background-color: white;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.1);
+  text-align: center;
+  width: 90%;
+  max-width: 500px;
+}
+
+h1, h2 {
+  color: #e8b200;
+}
+
+input[type="file"], select {
+  margin-top: 10px;
+  padding: 10px;
+  width: 90%;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+button {
+  margin-top: 20px;
+  background-color: #ffcc00;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #e6b800;
+}
+
+.hidden {
+  display: none;
+}
